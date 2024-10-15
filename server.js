@@ -4,10 +4,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // اتصال بقاعدة البيانات
-mongoose.connect('mongodb://localhost:27017/anonymous-messages', {
+mongoose.connect('mongodb+srv://mohamedsamir0240:Mo086860@creativity.1qjct.mongodb.net/anonymousMessagesDB?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-});
+})
+.then(() => console.log('Connected to MongoDB Atlas'))
+.catch(err => console.error('Error connecting to MongoDB Atlas:', err));
 
 // تعريف مخطط الرسائل
 const messageSchema = new mongoose.Schema({
